@@ -1,9 +1,5 @@
 <?php
-
 $todoThings = "./task.json";
-
 $tasks = json_encode($_POST);
-
-header('Content-Type: application/json');
-
+file_put_contents($todoThings, $tasks);
 echo $tasks;
