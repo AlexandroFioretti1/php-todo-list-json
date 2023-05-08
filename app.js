@@ -6,6 +6,7 @@ createApp({
       tasks: [],
       ContenutoNewTask: "",
       takeTask: "./takeTask.php",
+      getTask: "./postTask.php",
     };
   },
   methods: {
@@ -14,11 +15,20 @@ createApp({
         daFare: this.ContenutoNewTask,
         completato: "false",
       });
+      axios
+        .post(this.getTask, this.tasks, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((response) => console.log(response))
+        .catch((error) => console.error(error.message));
     },
   },
   mounted() {
-    axios.get(this.takeTask).then((response) => {
-      this.tasks = response.data;
-    });
+    axios
+      .get(this.takeTask)
+      .then((response) => {
+        this.tasks = response.data;
+      })
+      .catch((error) => console.error(error.message));
   },
 }).mount("#app");
