@@ -22,9 +22,9 @@
         </div>
         <div class="container text-center border bg-light">
             <ul class="list-unstyled bg-light">
-                <li v-for="task in tasks" class="d-flex align-items-center justify-content-between ">
+                <li v-for="(task, index) in tasks" class="d-flex align-items-center justify-content-between ">
                     <p>{{task.daFare}}</p>
-                    <button class="btn">
+                    <button @click="deleteTask(index)" class="btn">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </li>
